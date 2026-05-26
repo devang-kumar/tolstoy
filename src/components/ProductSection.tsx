@@ -1,214 +1,137 @@
 "use client";
 
 import React from "react";
-import { featureMedia, images } from "@/lib/media";
-import type { VideoSource } from "@/lib/media";
-import { InteractiveMedia } from "@/components/InteractiveMedia";
 
-type Feature = {
-  title: string;
-  desc: string;
-  cta: string;
-  image: string;
-  video: VideoSource;
-  label?: string;
-  phone?: boolean;
-};
-
-const PLAYER_FEATURES: Feature[] = [
+const PLAYER_FEATURES = [
   {
     title: "We set the standard for Shoppable video",
     desc: "Increase conversions by showcasing your videos and UGC across your site, app, email, and SMS.",
-    cta: "Get AI Player for free",
-    ...featureMedia.player[0],
-    label: "Shoppable video",
-    phone: true,
+    videoUrl: "https://videos.pexels.com/video-files/7680438/7680438-hd_1920_1080_25fps.mp4",
   },
   {
     title: "Media gallery insights",
     desc: "Track which assets engage and convert, and how deeply shoppers browse.",
-    cta: "Get AI Player for free",
-    ...featureMedia.player[1],
-    label: "Analytics",
+    videoUrl: "https://videos.pexels.com/video-files/6238179/6238179-hd_1920_1080_25fps.mp4",
   },
   {
     title: "The only video syndication network",
     desc: "Syndicate your videos to Walmart, Shop app, and more.",
-    cta: "Get AI Player for free",
-    ...featureMedia.player[2],
-    label: "Syndication",
+    videoUrl: "https://videos.pexels.com/video-files/5585952/5585952-hd_1920_1080_25fps.mp4",
   },
 ];
 
-const STUDIO_FEATURES: Feature[] = [
+const STUDIO_FEATURES = [
   {
     title: "AI Creative agent",
     desc: "Generate high-quality images and videos with one quick chat.",
-    cta: "Get AI Studio for free",
-    ...featureMedia.studio[0],
-    label: "AI Creative",
-    phone: true,
+    videoUrl: "https://videos.pexels.com/video-files/7287924/7287924-hd_1920_1080_25fps.mp4",
   },
   {
     title: "Beautiful, ready-made templates",
     desc: "Pick, click, and post gorgeous visuals in seconds.",
-    cta: "Get AI Studio for free",
-    ...featureMedia.studio[1],
-    label: "Templates",
+    videoUrl: "https://videos.pexels.com/video-files/8937985/8937985-hd_1920_1080_25fps.mp4",
   },
   {
     title: "Generate at scale",
     desc: "Automatically generate content across your entire product catalog.",
-    cta: "Get AI Studio for free",
-    ...featureMedia.studio[2],
-    label: "At scale",
+    videoUrl: "https://videos.pexels.com/video-files/7287757/7287757-hd_1920_1080_25fps.mp4",
   },
 ];
 
-const SHOPPER_FEATURES: Feature[] = [
+const SHOPPER_FEATURES = [
   {
     title: "Virtual try-on",
     desc: "Increase your visitors' confidence to buy with lightning-fast & accurate virtual try-on.",
-    cta: "Get AI Shopper for free",
-    ...featureMedia.shopper[0],
-    label: "Try-on",
-    phone: true,
+    videoUrl: "https://videos.pexels.com/video-files/9167976/9167976-hd_1920_1080_25fps.mp4",
   },
   {
     title: "Your brand's ChatGPT",
     desc: "Trained on your catalog, tuned to your customers, built to sell.",
-    cta: "Get AI Shopper for free",
-    ...featureMedia.shopper[1],
-    label: "AI Chat",
+    videoUrl: "https://videos.pexels.com/video-files/5981981/5981981-hd_1920_1080_25fps.mp4",
   },
   {
     title: "Know your shoppers",
     desc: "Collect subscribers & build rich customer profiles.",
-    cta: "Get AI Shopper for free",
-    ...featureMedia.shopper[2],
-    label: "Profiles",
+    videoUrl: "https://videos.pexels.com/video-files/6994766/6994766-hd_1920_1080_25fps.mp4",
   },
 ];
 
-function FeatureRow({
-  title,
-  desc,
-  cta,
-  image,
-  video,
-  label,
-  phone,
-  reverse = false,
-}: Feature & { reverse?: boolean }) {
+function FeatureRow({ title, desc, videoUrl, reverse = false }: {
+  title: string; desc: string; videoUrl: string; reverse?: boolean;
+}) {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: reverse ? "row-reverse" : "row",
-        gap: 48,
-        alignItems: "center",
-        flexWrap: "wrap",
-        padding: "48px 0",
-        borderBottom: "1px solid #f0f0f0",
-      }}
-    >
-      <div style={{ flex: "1 1 300px", minWidth: 0 }}>
-        <h3
-          style={{
-            fontSize: "clamp(1.35rem, 2.5vw, 1.85rem)",
-            fontWeight: 700,
-            letterSpacing: "-0.03em",
-            marginBottom: 14,
-          }}
-        >
+    <div style={{
+      display: "flex",
+      flexDirection: reverse ? "row-reverse" : "row",
+      gap: "64px",
+      alignItems: "center",
+      flexWrap: "wrap",
+      padding: "64px 0",
+      borderBottom: "1px solid #f0f0f0",
+    }}>
+      <div style={{ flex: "1 1 360px", minWidth: 0 }}>
+        <h3 style={{
+          fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+          fontWeight: 800,
+          letterSpacing: "-0.03em",
+          marginBottom: "18px",
+          color: "#000",
+        }}>
           {title}
         </h3>
-        <p style={{ fontSize: "1rem", color: "#555", lineHeight: 1.7, marginBottom: 20 }}>{desc}</p>
-        <p style={{ fontSize: "0.8rem", color: "#999", marginBottom: 16 }}>
-          Preview on hover · Click to play or pause
+        <p style={{
+          fontSize: "1.05rem",
+          color: "#555",
+          lineHeight: 1.75,
+          marginBottom: "28px",
+        }}>
+          {desc}
         </p>
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
           <a href="#" className="btn-black">
-            {cta}
+            Get AI Player for free
           </a>
-          <a
-            href="#"
-            style={{
-              color: "#000",
-              fontWeight: 600,
-              fontSize: "0.875rem",
-              display: "inline-flex",
-              alignItems: "center",
-              padding: "12px 0",
-            }}
-          >
-            Learn more →
+          <a href="#" style={{
+            color: "#000",
+            fontWeight: 600,
+            fontSize: "0.9rem",
+            padding: "12px 0",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "6px",
+          }}>
+            Learn more <span style={{ fontSize: "1.1rem" }}>→</span>
           </a>
         </div>
       </div>
-      <div style={{ flex: "1 1 300px", display: "flex", justifyContent: "center" }}>
-        <InteractiveMedia
-          image={image}
-          video={video}
-          alt={title}
-          phone={phone}
-          shoppable={phone}
-          productThumb={images.player1}
-          label={label}
-        />
+      <div style={{ flex: "1 1 400px", display: "flex", justifyContent: "center" }}>
+        <div className="phone-frame" style={{ width: "280px", height: "560px" }}>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          >
+            <source src={videoUrl} type="video/mp4" />
+          </video>
+        </div>
       </div>
     </div>
   );
 }
 
-function ProductBlock({
-  id,
-  label,
-  tagBg,
-  tagColor,
-  features,
-  sectionTitle,
-}: {
-  id: string;
-  label: string;
-  tagBg: string;
-  tagColor: string;
-  features: Feature[];
-  sectionTitle?: string;
+function ProductBlock({ id, label, tagBg, features }: {
+  id: string; label: string; tagBg: string;
+  features: { title: string; desc: string; videoUrl: string }[];
 }) {
   return (
-    <div id={id} style={{ padding: "80px 0 20px" }}>
-      {sectionTitle && (
-        <h2
-          style={{
-            fontSize: "clamp(1.5rem, 3vw, 2rem)",
-            fontWeight: 800,
-            letterSpacing: "-0.03em",
-            marginBottom: 40,
-            textAlign: "center",
-          }}
-        >
-          {sectionTitle}
-        </h2>
-      )}
-      <span
-        style={{
-          display: "inline-flex",
-          background: tagBg,
-          color: tagColor,
-          padding: "6px 16px",
-          borderRadius: 100,
-          fontWeight: 700,
-          fontSize: "0.75rem",
-          letterSpacing: "0.06em",
-          textTransform: "uppercase",
-          marginBottom: 32,
-        }}
-      >
+    <div id={id} style={{ padding: "80px 0 40px" }}>
+      <div className="section-tag" style={{ background: tagBg, color: "#000" }}>
         {label}
-      </span>
+      </div>
       {features.map((f, i) => (
-        <FeatureRow key={f.title} {...f} reverse={i % 2 === 1} />
+        <FeatureRow key={i} {...f} reverse={i % 2 === 1} />
       ))}
     </div>
   );
@@ -216,29 +139,25 @@ function ProductBlock({
 
 export default function ProductSection() {
   return (
-    <section style={{ background: "#fff", padding: "0 clamp(16px, 4vw, 40px)" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+    <section style={{ background: "#fff", padding: "0 24px" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <ProductBlock
           id="ai-player"
           label="AI Player · Shoppable videos"
-          tagBg="var(--player-bg)"
-          tagColor="var(--player-blue)"
+          tagBg="#e8f4ff"
           features={PLAYER_FEATURES}
         />
         <ProductBlock
           id="ai-studio"
           label="AI Studio · Create AI images & videos"
-          tagBg="var(--studio-bg)"
-          tagColor="var(--studio-purple)"
+          tagBg="#f3e8ff"
           features={STUDIO_FEATURES}
         />
         <ProductBlock
           id="ai-shopper"
           label="AI Shopper · AI sales chatbot"
-          tagBg="var(--shopper-bg)"
-          tagColor="var(--shopper-green)"
+          tagBg="#e8fff0"
           features={SHOPPER_FEATURES}
-          sectionTitle="Entirely New AI-Shopping Experiences"
         />
       </div>
     </section>

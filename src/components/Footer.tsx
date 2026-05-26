@@ -1,88 +1,57 @@
-"use client";
-
-import React from "react";
-import { site } from "@/lib/site";
-
-const FOOTER_LINKS = {
-  Product: [
-    { label: "AI Studio", href: "#ai-studio" },
-    { label: "AI Player", href: "#ai-player" },
-    { label: "AI Shopper", href: "#ai-shopper" },
-    { label: "Gallery", href: "#" },
-  ],
-  Company: [
-    { label: "Developer", href: "#developer" },
-    { label: "Contact", href: `mailto:${site.author.email}` },
-    { label: "Privacy", href: "#" },
-    { label: "Terms", href: "#" },
-  ],
-};
+import Link from "next/link";
+import { PRODUCTS } from "@/lib/products";
 
 export default function Footer() {
-  const { author } = site;
-
   return (
     <footer className="site-footer">
-      <div className="footer-inner">
-        <div className="footer-grid">
-          <div className="footer-brand">
-            <div className="footer-logo">
-              <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden>
-                <rect width="28" height="28" rx="8" fill="#fff" />
-                <path d="M8 8h12M14 8v12" stroke="#000" strokeWidth="2.5" strokeLinecap="round" />
-              </svg>
+      <div className="site-footer-inner">
+        <div className="site-footer-grid">
+          <div>
+            <div className="site-footer-brand">
+              <span className="nav-logo-mark">T</span>
               Tolstoy
             </div>
-            <p>The AI Commerce platform for modern brands.</p>
-            <p className="footer-built">
-              Built by{" "}
-              <a href="#developer" className="footer-author-link">
-                {author.name}
-              </a>
-            </p>
+            <p className="site-footer-copy">© {new Date().getFullYear()} Tolstoy. All rights reserved.</p>
           </div>
-
-          {Object.entries(FOOTER_LINKS).map(([section, links]) => (
-            <div key={section}>
-              <h3 className="footer-col-title">{section}</h3>
-              <ul>
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <a href={link.href}>{link.label}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
           <div>
-            <h3 className="footer-col-title">My profiles</h3>
+            <h4>Product</h4>
             <ul>
-              {author.profiles.map((p) => (
-                <li key={p.id}>
+              <li>
+                <Link href="/">AI Player</Link>
+              </li>
+              <li>
+                <Link href="#ai-studio">AI Studio</Link>
+              </li>
+              <li>
+                <Link href="#ai-shopper">AI Shopper</Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4>Other products</h4>
+            <ul>
+              {PRODUCTS.partners.map((p) => (
+                <li key={p.name}>
                   <a href={p.href} target="_blank" rel="noopener noreferrer">
-                    {p.label} ↗
+                    {p.name}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
-        </div>
-
-        <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} {author.name}</span>
-          <div className="footer-social">
-            {author.profiles.map((p) => (
-              <a
-                key={p.id}
-                href={p.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={p.label}
-              >
-                {p.label[0]}
-              </a>
-            ))}
+          <div>
+            <h4>Company</h4>
+            <ul>
+              <li>
+                <a href="#">Contact</a>
+              </li>
+              <li>
+                <a href="#">Privacy policy</a>
+              </li>
+              <li>
+                <a href="#">Terms of use</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

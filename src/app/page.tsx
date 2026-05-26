@@ -1,32 +1,12 @@
-import React from "react";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
-import StatsBar from "@/components/StatsBar";
-import ProductSection from "@/components/ProductSection";
-import CrossProduct from "@/components/CrossProduct";
-import MediaShowcase from "@/components/MediaShowcase";
-import Testimonials from "@/components/Testimonials";
-import ProfileSection from "@/components/ProfileSection";
-import CTABanner from "@/components/CTABanner";
-import Footer from "@/components/Footer";
+import fs from 'fs';
+import path from 'path';
+import React from 'react';
 
 export default function Home() {
+  const htmlPath = path.join(process.cwd(), 'src', 'app', 'raw.html');
+  const rawHtml = fs.readFileSync(htmlPath, 'utf8');
+
   return (
-    <>
-      <Navbar />
-      <main id="main-content">
-        <Hero />
-        <StatsBar />
-        <Marquee />
-        <MediaShowcase />
-        <ProductSection />
-        <CrossProduct />
-        <Testimonials />
-        <ProfileSection />
-        <CTABanner />
-      </main>
-      <Footer />
-    </>
+    <div dangerouslySetInnerHTML={{ __html: rawHtml }} />
   );
 }

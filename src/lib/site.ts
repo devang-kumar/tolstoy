@@ -1,10 +1,10 @@
 /** Site-wide SEO & author profile */
 
 export const site = {
-  name: "Tolstoy AI Commerce",
-  title: "AI Commerce Platform | Shoppable Video & AI Shopping",
+  name: "Tolstoy AI Player",
+  title: "AI Player: Shoppable Video for eCommerce | Tolstoy",
   description:
-    "Supercharge product discovery, engagement, and conversion with AI-first shopping experiences — shoppable video, AI Studio, and AI Shopper for modern e-commerce brands.",
+    "The #1 shoppable video solution for e-commerce. Auto-import from TikTok and Instagram, AI product tagging, dynamic PDP galleries, and free syndication to Walmart and Shop App.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://pagecopy.vercel.app",
   locale: "en_US",
   keywords: [
