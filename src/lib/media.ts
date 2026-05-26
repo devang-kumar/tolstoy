@@ -1,62 +1,53 @@
-const img = (id: string, w = 800) =>
-  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+/** High-quality images (Pexels) + self-hosted HD videos (always load from /public) */
 
-export const FALLBACK_VIDEO =
-  "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
+const img = (id: string, w = 1400) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}&dpr=2`;
 
-const FALLBACK_VIDEO_2 =
-  "https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4";
+const vid = (file: string) => `/media/videos/${file}`;
 
-const FALLBACK_VIDEO_3 =
-  "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4";
-
-const px = (id: number) =>
-  `https://videos.pexels.com/video-files/${id}/${id}-sd_640_360_30fps.mp4`;
-
-const pxHd = (id: number) =>
-  `https://videos.pexels.com/video-files/${id}/${id}-hd_1280_720_30fps.mp4`;
+const DEFAULT_VIDEO = vid("hero.mp4");
 
 export const images = {
-  heroPlayer: img("2983464"),
-  heroStudio: img("7671166"),
-  heroShopper: img("5632402"),
-  player1: img("1926769", 600),
-  player2: img("994523", 600),
-  player3: img("1464625", 600),
-  studio1: img("3183150", 600),
-  studio2: img("1036623", 600),
-  studio3: img("1126993", 600),
-  shopper1: img("1536619", 600),
-  shopper2: img("985635", 600),
-  shopper3: img("14884599", 600),
-  cross1: img("1536619", 500),
-  cross2: img("7671166", 500),
-  cross3: img("2983464", 500),
+  heroPlayer: img("2983464", 1600),
+  heroStudio: img("7671166", 1600),
+  heroShopper: img("5632402", 1600),
+  player1: img("1926769", 1200),
+  player2: img("994523", 1200),
+  player3: img("1464625", 1200),
+  studio1: img("3183150", 1200),
+  studio2: img("1036623", 1200),
+  studio3: img("1126993", 1200),
+  shopper1: img("1536619", 1200),
+  shopper2: img("985635", 1200),
+  shopper3: img("14884599", 1200),
+  cross1: img("1536619", 1000),
+  cross2: img("7671166", 1000),
+  cross3: img("2983464", 1000),
   gallery: [
-    img("994835", 500),
-    img("157675", 500),
-    img("606506", 500),
-    img("298863", 500),
-    img("2653876", 500),
-    img("4210860", 500),
-    img("6311652", 500),
-    img("768006", 500),
-    img("1927259", 500),
-    img("3754650", 500),
-    img("4467687", 500),
-    img("5704841", 500),
+    img("994835", 900),
+    img("157675", 900),
+    img("606506", 900),
+    img("298863", 900),
+    img("2653876", 900),
+    img("4210860", 900),
+    img("6311652", 900),
+    img("768006", 900),
+    img("1927259", 900),
+    img("3754650", 900),
+    img("4467687", 900),
+    img("5704841", 900),
   ],
   brand: [
-    img("1926769", 200),
-    img("994523", 200),
-    img("1464625", 200),
-    img("1036623", 200),
-    img("1126993", 200),
-    img("1536619", 200),
-    img("985635", 200),
-    img("5632402", 200),
-    img("994835", 200),
-    img("606506", 200),
+    img("1926769", 400),
+    img("994523", 400),
+    img("1464625", 400),
+    img("1036623", 400),
+    img("1126993", 400),
+    img("1536619", 400),
+    img("985635", 400),
+    img("5632402", 400),
+    img("994835", 400),
+    img("606506", 400),
   ],
 } as const;
 
@@ -66,23 +57,23 @@ export type VideoSource = {
   poster?: string;
 };
 
-function v(primary: string, fallback: string, poster?: string): VideoSource {
-  return { primary, fallback, poster };
+function v(file: string, fallback = DEFAULT_VIDEO, poster?: string): VideoSource {
+  return { primary: vid(file), fallback: vid(fallback), poster };
 }
 
 export const videos = {
-  hero: v(pxHd(6774107), FALLBACK_VIDEO, images.heroPlayer),
-  player: v(px(4364943), FALLBACK_VIDEO, images.player1),
-  studio: v(px(5653459), FALLBACK_VIDEO_2, images.studio1),
-  shopper: v(px(3205917), FALLBACK_VIDEO_3, images.shopper1),
-  phone: v(px(6774107), FALLBACK_VIDEO, images.heroPlayer),
-  fashion1: v(pxHd(5499745), FALLBACK_VIDEO, images.gallery[0]),
-  fashion2: v(px(7616786), FALLBACK_VIDEO_2, images.gallery[3]),
-  retail: v(px(5080877), FALLBACK_VIDEO_3, images.gallery[1]),
-  product: v(px(3945138), FALLBACK_VIDEO, images.gallery[2]),
-  lifestyle: v(px(3254023), FALLBACK_VIDEO_2, images.gallery[4]),
-  beauty: v(px(6164754), FALLBACK_VIDEO_3, images.gallery[5]),
-  shopping: v(px(4434242), FALLBACK_VIDEO, images.gallery[6]),
+  hero: v("hero.mp4", "hero.mp4", images.heroPlayer),
+  player: v("player.mp4", "fashion.mp4", images.player1),
+  studio: v("studio.mp4", "hero.mp4", images.studio1),
+  shopper: v("shopper.mp4", "player.mp4", images.shopper1),
+  phone: v("fashion.mp4", "hero.mp4", images.heroPlayer),
+  fashion1: v("fashion.mp4", "player.mp4", images.gallery[0]),
+  fashion2: v("lifestyle.mp4", "fashion.mp4", images.gallery[3]),
+  retail: v("retail.mp4", "player.mp4", images.gallery[1]),
+  product: v("product.mp4", "studio.mp4", images.gallery[2]),
+  lifestyle: v("lifestyle.mp4", "fashion.mp4", images.gallery[4]),
+  beauty: v("beauty.mp4", "shopper.mp4", images.gallery[5]),
+  shopping: v("shopping.mp4", "shopper.mp4", images.gallery[6]),
 } as const;
 
 export const interactiveTiles = [

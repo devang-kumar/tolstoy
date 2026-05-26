@@ -68,8 +68,7 @@ export default function RootLayout({
       <head>
         <SeoJsonLd />
         <link rel="preconnect" href="https://images.pexels.com" />
-        <link rel="preconnect" href="https://videos.pexels.com" />
-        <link rel="preconnect" href="https://storage.googleapis.com" />
+        <link rel="dns-prefetch" href="https://images.pexels.com" />
       </head>
       <body className={inter.variable}>{children}</body>
     </html>
