@@ -49,8 +49,8 @@ export default function MediaShowcase() {
       <div className="showcase-inner">
         <header className="showcase-header">
           <p className="section-eyebrow section-eyebrow-light">Interactive media gallery</p>
-          <h2 id="showcase-heading">Hover or tap to preview shoppable content</h2>
-          <p>Videos load automatically — fashion, retail & lifestyle footage from Pexels.</p>
+          <h2 id="showcase-heading">Preview shoppable content in action</h2>
+          <p>Fashion, retail, and lifestyle clips brands use on product pages every day.</p>
         </header>
 
         <div className="gallery-grid">

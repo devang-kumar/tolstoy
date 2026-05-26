@@ -89,7 +89,7 @@ export function InteractiveMedia({
       {video && !showVideo && (
         <div className="play-badge-floating" aria-hidden>
           <span>▶</span>
-          <span className="play-badge-text">Tap to play</span>
+          <span className="play-badge-text">Play video</span>
         </div>
       )}
 

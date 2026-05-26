@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Tolstoy demo · {author.name}</span>
+          <span>© {new Date().getFullYear()} {author.name}</span>
           <div className="footer-social">
             {author.profiles.map((p) => (
               <a

@@ -125,7 +125,7 @@ function FeatureRow({
         </h3>
         <p style={{ fontSize: "1rem", color: "#555", lineHeight: 1.7, marginBottom: 20 }}>{desc}</p>
         <p style={{ fontSize: "0.8rem", color: "#999", marginBottom: 16 }}>
-          Hover to preview · Click to play/pause
+          Preview on hover · Click to play or pause
         </p>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
           <a href="#" className="btn-black">

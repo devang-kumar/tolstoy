@@ -109,7 +109,7 @@ export default function Testimonials() {
                 autoPlay={videoActive}
                 visible={videoActive}
               />
-              <span className="video-hint">{videoActive ? "▶ Playing" : "Hover to watch"}</span>
+              <span className="video-hint">{videoActive ? "Playing" : "Watch story"}</span>
             </div>
 
             <div className="testimonial-stats-col">

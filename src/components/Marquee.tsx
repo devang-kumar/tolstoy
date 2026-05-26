@@ -77,7 +77,7 @@ export default function Marquee() {
 
   return (
     <section className="marquee-section" aria-label="Trusted brands">
-      <p className="marquee-eyebrow">Trusted by the best in e-Commerce · Hover to preview video</p>
+      <p className="marquee-eyebrow">Trusted by the best in e-Commerce</p>
 
       <div className="marquee-outer" style={{ marginBottom: 14 }}>
         <div className="marquee-left">

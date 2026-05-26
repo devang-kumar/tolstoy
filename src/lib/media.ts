@@ -1,9 +1,6 @@
-/** Media URLs — Pexels images + reliable video sources with fallbacks */
-
 const img = (id: string, w = 800) =>
   `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
 
-/** Google sample bucket — always embeddable, used as video fallback */
 export const FALLBACK_VIDEO =
   "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
 
@@ -13,7 +10,6 @@ const FALLBACK_VIDEO_2 =
 const FALLBACK_VIDEO_3 =
   "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4";
 
-/** Pexels SD — lighter & fewer hotlink issues than UHD */
 const px = (id: number) =>
   `https://videos.pexels.com/video-files/${id}/${id}-sd_640_360_30fps.mp4`;
 

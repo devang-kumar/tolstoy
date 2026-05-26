@@ -38,7 +38,7 @@ export default function ProfileSection() {
     >
       <div className="profile-inner">
         <div className="profile-intro">
-          <p className="section-eyebrow">Built by</p>
+          <p className="section-eyebrow">Developer</p>
           <h2 id="profile-heading" className="profile-name">
             {author.name}
           </h2>
