@@ -13,6 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="referrer" content="no-referrer" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Font Awesome – needed for the nav icon fa-icon elements in the Webflow HTML */}
         <link
@@ -21,7 +22,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body style={{ margin: 0, padding: 0, overflowX: 'hidden' }}>
+      <body>
         {children}
       </body>
     </html>
